@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
-        'password',
+        'telegram_id',
+        'username',
+        'phone',
+        'session_name'
     ];
 
     /**
@@ -41,4 +43,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function folders() {
+        return $this->hasMany(Folder::class);
+    }
 }
