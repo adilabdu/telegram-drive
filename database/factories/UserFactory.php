@@ -14,12 +14,21 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        return [
+        $example = [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+        ];
+
+        $username = $this->faker->unique()->userName();
+        return [
+            'name' => $this->faker->name(),
+            'telegram_id' => $this->faker->unique()->numberBetween(0, 11),
+            'username' => $username,
+            'phone' => $this->faker->unique()->phoneNumber(),
+            'session_name' => $username
         ];
     }
 
